@@ -23,6 +23,7 @@ public class Inputs : MonoBehaviour {
 
 	HeadReset headReset;
 	ShipController shipController;
+	Weapons weapons;
 
 	void Start () {
 		rightHand = trackedRight.transform;
@@ -31,6 +32,7 @@ public class Inputs : MonoBehaviour {
 
 		headReset = FindObjectOfType<HeadReset>();
 		shipController = FindObjectOfType<ShipController>();
+		weapons = FindObjectOfType<Weapons>();
 	}
 
 	IEnumerator GetControllers () {
@@ -64,6 +66,14 @@ public class Inputs : MonoBehaviour {
 			var rightJs = GetJoystickInput(rightHand);
 			shipController.Torque(rightJs);
 			shipController.Jaw(rightInput.GetAxis(pad).x);
+		}
+
+		if (rightInput.GetPressDown(trigger)) {
+			weapons.FireMissile();
+		}
+
+		if (leftInput.GetPress(trigger)) {
+			weapons.FireMachinegun();
 		}
 	}
 
