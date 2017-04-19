@@ -7,8 +7,6 @@ public class ShipController : MonoBehaviour {
 	public float forwardSpeed, strafeSpeed, hoverSpeed;
 	public float pitchSpeed, rollSpeed, jawSpeed;
 
-	bool gravityStabilizer;
-
 	Rigidbody rb;
 
 	void Start () {
@@ -32,15 +30,5 @@ public class ShipController : MonoBehaviour {
 
 	public void Hover (float input) {
 		rb.AddForce(transform.up * input * hoverSpeed * Time.deltaTime);
-	}
-
-	public void ToggleGravityStabilizer () {
-		gravityStabilizer = !gravityStabilizer;
-	}
-
-	void FixedUpdate () {
-		if (gravityStabilizer) {
-			rb.AddForce(-Physics.gravity);
-		}
 	}
 }

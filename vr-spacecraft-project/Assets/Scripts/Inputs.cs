@@ -52,8 +52,10 @@ public class Inputs : MonoBehaviour {
 			headReset.ResetHead();
 		}
 
-		if (rightInput.GetPressDown(grip) || leftInput.GetPressDown(grip)) {
-			shipController.ToggleGravityStabilizer();
+		// TODO
+		if (rightInput.GetPressDown(grip)) {
+			// Show HUD cam
+
 		}
 
 		if (leftPoint.controllerInside) {
